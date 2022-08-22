@@ -1,0 +1,49 @@
+@font-face {
+    font-family: GT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Black-Trial.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GGT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Bold-Trial.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Medium-Trial.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Regular-Trial.woff2') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Light-Trial.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: GT-Planar;
+    src: local("GT-Planar"),
+        url('../../components/assets/fonts/GT-Planar-Thin-Trial.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+
+$font: 'GT-Planar', sans-serif;

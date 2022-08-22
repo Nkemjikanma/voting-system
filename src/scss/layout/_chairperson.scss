@@ -1,0 +1,221 @@
+.chairperson-container {}
+
+.chairperson {
+    position: relative;
+    width: 100%;
+
+    min-width: 50rem;
+    height: 100%;
+    padding: 1rem 2px;
+    //border: 1px solid red;
+    overflow: auto; //box-shadow: var(--box-shadow);
+
+    .new--proposal {
+        position: relative;
+        margin-top: 3rem;
+        padding: 3rem 3rem;
+        height: 20rem;
+        box-shadow: var(--box-shadow);
+        border-radius: 10px;
+        width: 100%;
+
+        h2 {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+
+        }
+
+        p {
+            font-weight: 300;
+            margin-bottom: 1rem;
+
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .input--divs--container {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                //align-items: center;
+                gap: 1rem;
+                height: 5rem;
+                flex-wrap: nowrap;
+
+            }
+
+            .input--divs {
+                display: flex;
+                flex-direction: column;
+                align-content: space-between;
+                width: 50%;
+            }
+
+            label {
+                font-size: 15px;
+                margin-bottom: 0.6rem;
+            }
+
+
+
+            input {
+                width: 12;
+                height: 2rem;
+                border: 1px solid #cccccc;
+                border-radius: 6px;
+                text-indent: 7px;
+
+            }
+
+            input:focus {
+                border: 1px solid var(--primary-bg-color)
+            }
+
+
+
+
+
+            .duration {
+                width: 4rem;
+            }
+
+            button {
+                //align-self: c;
+                width: 10rem;
+                height: 3rem;
+                border: none;
+                border-radius: 15px;
+                background: none;
+                //background: var(--primary-bg-color);
+                color: var(--primary-bg-color);
+
+            }
+
+            .add-proposal {
+                border: 2px solid var(--primary-bg-color)
+            }
+
+            button:hover {
+                background: rgba(59, 130, 246, 0.2)
+            }
+        }
+    }
+}
+
+.top-section {
+    width: 100%;
+    min-width: 50rem;
+    //border: 1px solid red;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+
+
+    .header--p {
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+
+}
+
+.paginationBttns {
+    //border: 1px solid red;
+    width: 100%;
+    min-width: 30rem;
+    height: 2rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.paginationBttns a {
+    padding: 2px 15px;
+    margin: 8px;
+    height: 1.7rem;
+
+    border-radius: 10px;
+    border: 1px solid var(--primary-bg-color);
+    color: var(--primary-bg-color);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--primary-hover-color);
+    }
+}
+
+.paginationActive a {
+    background-color: var(--primary-hover-color);
+}
+
+.alert-container {
+    //border: 1px solid red;
+    //display: none;
+    visibility: hidden;
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    transition: all 0.5s var(--cubic-bezier) 0.15;
+    animation: alert 2s var(--cubic-bezier) 0.5s alternate;
+
+    .alert {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: -5px;
+        background: var(--primary-color);
+        width: 7rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        transition: all 0.5s var(--cubic-bezier) 0.15;
+        animation: alert 2s var(--cubic-bezier) 0.5s alternate;
+    }
+
+    .alert::after {
+        content: " ";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        transform: rotate(45deg);
+        top: 17px;
+        z-index: -1;
+
+    }
+
+
+}
+
+
+@keyframes alert {
+    0% {
+        //transform: translateY(0);
+        transform: scale(0);
+    }
+
+    70% {
+        //transform: translateY(10px);
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+
+}

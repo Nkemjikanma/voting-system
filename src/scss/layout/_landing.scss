@@ -1,0 +1,183 @@
+.landing-page {
+    position: relative;
+    height: 100%;
+    width: 80%;
+    min-width: 70rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //border: 1px solid yellow;
+
+    .landing-section {
+        @extend .landing-page;
+        position: relative;
+        width: 60%;
+        min-width: 60rem;
+        height: 70%;
+        //border: 1px solid red;
+
+        .sign-button {
+            @extend .landing-page;
+            height: 50%;
+            width: 90%;
+            //border: 1px solid red;
+
+            .connect-button {
+                width: 20rem;
+                height: 5rem;
+                font-size: 2rem;
+                letter-spacing: 0.15rem;
+                text-transform: uppercase;
+                padding: 1rem 2rem;
+                background: none;
+                //border: 2px solid var(--primary-bg-color);
+                color: var(--primary-bg-color);
+                border-radius: 0px;
+                position: relative;
+                transition: all 0.5s var(--cubic-bezier) 0.15s;
+                border: none;
+                //font-weight: bolder;
+
+
+                &:hover {
+                    color: var(--primary-color);
+                    transform: scale(1.1);
+                    border: none;
+
+                    &::before,
+                    &::after {
+                        top: 0;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 0;
+                        animation: none;
+                    }
+
+                    &::after {
+                        left: 0rem;
+                        background-color: var(--primary-bg-color);
+                    }
+
+                    &::before {
+                        top: 0.5rem;
+                        left: 0.35rem;
+                    }
+                }
+
+
+            }
+
+            .connect-button::before,
+            .connect-button::after {
+                content: "";
+                width: 1.5rem;
+                height: 1.5rem;
+                background: var(--primary-color);
+                position: absolute;
+                border-radius: 50%;
+                z-index: -2;
+                transition: all 0.5s var(--cubic-bezier);
+            }
+
+            .connect-button::before {
+                border: 0px;
+                animation: topAnimation 2s var(--cubic-bezier) 0.5s infinite alternate;
+                top: -0.6rem;
+                left: -1rem;
+            }
+
+            .connect-button::after {
+                top: 4rem;
+                left: 18rem;
+                animation: bottomAnimation 2s var(--cubic-bezier) 0.5s infinite alternate
+            }
+
+            @keyframes topAnimation {
+                from {
+                    transform: translate(0rem, 0);
+                }
+
+                to {
+                    transform: translate(0rem, 4.2rem);
+                }
+            }
+
+            @keyframes bottomAnimation {
+                from {
+                    transform: translate(-17.8rem);
+                }
+            }
+        }
+
+        .sign-button::before {
+            content: "";
+            width: 60%;
+            min-width: 35rem;
+            height: 40%;
+            background-color: var(--accent-color);
+            position: absolute;
+            z-index: -10;
+            //top: 50px;
+            left: 200px;
+        }
+
+        .new-to-web {
+            margin-bottom: 1rem;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .download-meta-link {
+            @extend .landing-page;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            position: relative;
+            height: 10%;
+            width: 90%;
+            text-align: center;
+            align-items: flex-start;
+            //border: 1px solid red;
+
+            font-size: 1.2rem;
+
+            .link--pointer {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                margin: 0 5px;
+            }
+
+        }
+
+        .download-meta-link::after {
+            content: "";
+            background: var(--accent-color);
+            width: 20%;
+            height: .7rem;
+            z-index: -5;
+            position: absolute;
+            top: 1.5rem;
+            left: 23rem;
+        }
+    }
+
+    .landing-section::after {
+        content: "";
+        width: 40%;
+        height: 20%;
+        background-color: var(--primary-color);
+        position: absolute;
+        z-index: -10;
+        transform: rotate(-45deg);
+        //border-radius: 50%;
+        top: 350px;
+        left: 560px;
+    }
+
+}
+
+
+.download-meta-link::after:hover {}

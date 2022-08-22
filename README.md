@@ -6,11 +6,15 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 ```
 npm install --save-dev hardhat
 ```
-2. Install SASS
+2. Insall Web3Modal
+```
+npm i web3modal
+```
+3. Install SASS
 ```
 npm install sass
 ```
-3. Install React-Icons
+4. Install React-Icons
 ```
 npm install react-icons
 ```

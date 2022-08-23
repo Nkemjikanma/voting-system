@@ -1,0 +1,90 @@
+.horizontal-header {
+    width: 100%;
+    min-width: 50rem;
+    //border: 1px solid var(--primary-bg-color);
+    margin-bottom: 1rem;
+
+    nav {
+        //border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        //z-index: 1;
+
+        .ark {
+            font-size: 2rem;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+
+            h3 {
+                border: 2px solid var(--primary-bg-color);
+                width: 3rem;
+                border-radius: 15px;
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                //text-align: center;
+                height: 3rem;
+            }
+        }
+
+        .other-side-ark {
+            width: 90%;
+            @extend .ark;
+            justify-content: flex-end;
+            align-items: center;
+            border: none;
+            //border: 1px solid red;
+
+            .search--box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                height: 3rem;
+                width: 13rem;
+                //border: 1px solid red;
+                margin-left: 1rem;
+
+                input {
+                    height: 2rem;
+                    width: 11rem;
+                    border: transparent;
+                    overflow: hidden;
+                    text-indent: 8px;
+                    background-color: #ccc;
+                    border-radius: 10px;
+                }
+
+                svg {
+                    margin-left: -2rem;
+                }
+
+                svg:hover {
+                    transform: scale(1.2);
+                    transition: var(--transition);
+                }
+            }
+
+            .icon-side {
+                width: 8rem;
+                align-items: center;
+                height: 3rem;
+
+                svg {
+                    width: calc(100% / 3);
+                }
+
+                svg:hover {
+                    transform: scale(1.2);
+                    transition: var(--transition);
+                }
+            }
+        }
+    }
+}

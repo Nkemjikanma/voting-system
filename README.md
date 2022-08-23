@@ -1,4 +1,4 @@
-![Voter's Page]("src/components/assets/Screen Shot 2022-08-23 at 11.40.22 AM.png")
+![Voter's Page](src/components/assets/screenShot.png)
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract and some calls to the deployed contract that is displayed using React. 
  

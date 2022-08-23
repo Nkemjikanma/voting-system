@@ -1,6 +1,8 @@
 ![Voter's Page](screenShot.png)
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract and some calls to the deployed contract that is displayed using React. 
+This project is a simple Voting System. 
+It comes with a simple contract, and basic interactions to the contract. 
+It was built using React, Hardhat, SASS. 
  
 ## 🛠 Installation and Setup
 

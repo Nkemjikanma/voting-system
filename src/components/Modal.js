@@ -19,7 +19,7 @@ export default function Modal({ showModal, setShowModal, propId, propName, setVo
                 setVoter(voterData)
                 console.log("This is voter data", voter)
                 const voting = await contract.vote(propName)
-                console.log("We voted", voting)
+                alert("Your vote has been cast")
                 getProposal();
                 canVote();
             } catch (error) {

@@ -6,7 +6,9 @@ import { Heading, Box, Text, Center, Square } from '@chakra-ui/react'
 
 
 export default function Header({ account }) {
-
+    /**
+     * ? The header, nav bar
+     * */
     return (
         <div className='horizontal-header'>
             <nav>

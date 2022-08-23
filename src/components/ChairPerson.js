@@ -1,11 +1,20 @@
 import React from 'react'
 import { ethers } from 'ethers'
+import { AiFillLock, AiFillUnlock } from 'react-icons/ai';
+import ReactPaginate from 'react-paginate'
+import {
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+} from '@chakra-ui/react'
 import VotingSystem from '../artifacts/contracts/VotingSystem.sol/VotingSystem.json'
 import TableData from './TableData'
 import Header from './Header'
-import { AiFillLock, AiFillUnlock } from 'react-icons/ai';
-import ReactPaginate from 'react-paginate'
+import Aside from './Aside';
+
 import styled from '@emotion/styled'
+import { GrWifiNone } from 'react-icons/gr';
 
 
 //console.log("chairperson", contract)
@@ -15,12 +24,12 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
         img_url: "",
         duration: 0
     }); // handles the user inputs
-    const [alert, setAlert] = React.useState(false); // Used to handle messages
+    //const [alert, setAlert] = React.useState(false); // Used to handle messages
     const [transactionHash, setTransactionHash] = React.useState("") // 
     const [pageNumber, setPageNumber] = React.useState(0); // used for pagination
 
     // Setting up pagination 
-    const proposalsPerPage = 5;
+    const proposalsPerPage = 10;
     const pagesVisited = pageNumber * proposalsPerPage;
     const pageCount = Math.ceil(allProposalsData.length / proposalsPerPage)
 
@@ -57,12 +66,7 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
                     const status = await contract.createProposal(proposalVal, link, duration)
                     setTransactionHash(status.hash)
                     status.wait()
-                    setAlert(true)
-
-
-                    if (alert) {
-                        document.querySelector(".alert-container").style.visbility = "visible";
-                    }
+                    alert("Successfully submitted")
 
                 } catch (err) {
                     console.log("error ", err)
@@ -81,6 +85,7 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
             console.log("empty fields")
         }
     }
+
 
     /**
      * ? Retrieving all the Proposal Data and displaying in a table
@@ -104,13 +109,9 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
 
     return (
         <div className='chairperson-container'>
-            <section className='top-section'>
-                <Header
-                    account={account} />
-            </section>
+            <Aside account={account} />
 
             <section className='chairperson'>
-                <h2>Welcome Chairperson!</h2>
                 <p className='top--section--p'>Create new Proposals to be decided upon by members of the community
                     <br />
                     Be aware that this is an MVP and more functionalities will be added in due time
@@ -143,6 +144,26 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
                     disabledClassName={"paginationDisabled"}
                     activeClassName={"paginationActive"}
                 />
+                {/*<div style={styles} className='alert-div'><Alert
+                    status='success'
+                    variant='subtle'
+                    flexDirection='column'
+                    alignItems='center'
+                    justifyContent='center'
+                    textAlign='center'
+                    marginTop="1rem"
+                    height='5rem'
+                    width="100%"
+                >
+                    <AlertIcon boxSize='40px' mr={0} />
+                    <AlertTitle mt={4} mb={1} fontSize='lg'>
+                        Application submitted!
+                    </AlertTitle>
+                    <AlertDescription maxWidth='sm'>
+                        Proposal succesfully submitted. The people will decide now.
+                    </AlertDescription>
+    </Alert></div>*/}
+
                 <div className='new--proposal'>
                     <h2>Add new proposal</h2>
                     <p>What matters shall we deliberate on, ser? </p>

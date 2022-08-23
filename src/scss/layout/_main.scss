@@ -2,94 +2,120 @@
     position: relative;
     width: 100%;
     height: 100%;
+    //border: 1px solid green;
 
-    .main {
-        @extend .main-container;
-        //border: 1px solid green;
+    .main-holder {
+        width: 100%;
+        min-width: 60rem;
+        position: relative;
+        height: 90%;
+        min-height: 55.3rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        gap: 2rem;
 
-        .proposal--content {
-            width: 110%;
-            display: grid;
-            //flex-direction: grid;
-            grid-template-columns: repeat(4, 25%);
-            grid-template-rows: auto;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            //border: 1px solid blue;
-            box-shadow: var(--box-shadow) inset;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            border-radius: 5px;
+        .main {
+            @extend .main-container;
+            //border: 1px solid green;
+            height: 90%;
+            margin-top: 6rem;
+            font-size: 0.8rem;
+            //margin-bottom: 2rem;
 
-            .viewData--content {
-                //width: calc((100%/4));
-                //border: 1px solid blue;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+            p {
+                line-height: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .proposal--content {
+                width: 95%;
+                display: grid;
+                //flex-direction: grid;
+                grid-template-columns: repeat(4, 25%);
+                grid-template-rows: auto;
                 justify-content: center;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                //border: 1px solid blue;
+                box-shadow: var(--box-shadow) inset;
                 padding: 1rem;
+                margin-bottom: 2rem;
                 border-radius: 5px;
-                box-shadow: var(--box-shadow);
 
-                img {
-                    padding: 0;
-                    margin: 0;
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: cover;
-                    border-radius: 5px;
-                    margin-bottom: 0.7rem;
-
-                }
-
-                .smaller--content {
-                    //border: 1px solid red;
-                    width: 80%;
+                .viewData--content {
+                    //width: calc((100%/4));
+                    border: 1px solid blue;
                     display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    //align-items: center;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1rem;
+                    border-radius: 5px;
+                    box-shadow: var(--box-shadow);
 
-                    //border: 1px solid green;
+                    img {
+                        padding: 0;
+                        margin: 0;
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        margin-bottom: 0.7rem;
 
-                    .proposal--name {
-                        font-size: 1rem;
-                        margin-bottom: 0.8rem;
-                        text-align: center;
+                    }
+
+                    .smaller--content {
                         //border: 1px solid red;
-                    }
-
-                    .proposal--vote-count {
-                        color: #ccc
-                    }
-                }
-
-                .proposal--status {
-                    //border: 1px solid red;
-                    width: 60%;
-
-                    .form {
+                        width: 80%;
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
-                        align-items: center;
+                        //align-items: center;
 
-                        button {
-                            width: 5rem;
-                            padding: 0.3rem 1rem;
+                        //border: 1px solid green;
+
+                        .proposal--name {
+                            font-size: 1rem;
+                            margin-bottom: 0.8rem;
+                            text-align: center;
+                            //border: 1px solid red;
                         }
 
-                        .disabledButton[disabled=disabled],
-                        .disabledButton:disabled {
-                            cursor: not-allowed;
-                            pointer-events: none;
+                        .proposal--vote-count {
+                            color: #ccc
+                        }
+                    }
+
+                    .proposal--status {
+                        //border: 1px solid red;
+                        width: 60%;
+
+                        .form {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            button {
+                                width: 5rem;
+                                padding: 0.3rem 1rem;
+                            }
+
+                            .disabledButton[disabled=disabled],
+                            .disabledButton:disabled {
+                                cursor: not-allowed;
+                                pointer-events: none;
+                            }
                         }
                     }
                 }
             }
         }
+
     }
+
+
 
 }

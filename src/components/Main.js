@@ -6,6 +6,7 @@ import VotingSystem from '../artifacts/contracts/VotingSystem.sol/VotingSystem.j
 import Header from './Header'
 import ChairPerson from './ChairPerson';
 import Modal from './Modal'
+import Aside from './Aside';
 
 
 
@@ -104,47 +105,52 @@ export default function Main({ accounts, contract, allProposalsData, allProposal
                     account={accounts} />
             </section>
 
-            <section className='main'>
-                <h2>Welcome Voter!</h2>
-                <p className='top--section--p'>Always remember that  your votes count and your voice is valid
-                    <br />
-                    Be aware that this is an MVP and more functionalities will be added in due time
-                </p>
 
-                <div className='proposal--content'>
-                    {viewData}
-                </div>
+            <div className='main-holder'>
+                <Aside />
 
-                <ReactPaginate
-                    previousLabel={"Previous"}
-                    nextLabel={"next"}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"paginationBttns"}
-                    previousLinkClassName={"previousBttn"}
-                    nextLinkClassName={"nextBttn"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
-                />
-                {
-                    showModal ?
-                        <Modal
-                            setShowModal={setShowModal}
-                            propId={propId}
-                            propName={propName}
-                            voter={voter}
-                            setVoter={setVoter}
-                            contract={contract}
-                            getProposal={getProposal}
-                            accounts={accounts}
-                            canVote={canVote} />
-                        :
-                        null
-                }
-                <div className='alert-container'>
-                    <div className='alert'>Success</div>
-                </div>
-            </section >
+                <section className='main'>
+                    <p className='top--section--p'>Always remember that  your votes count and your voice is valid
+                        <br />
+                        Be aware that this is an MVP and more functionalities will be added in due time
+                    </p>
+
+                    <div className='proposal--content'>
+                        {viewData}
+                    </div>
+
+                    <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"next"}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"paginationBttns"}
+                        previousLinkClassName={"previousBttn"}
+                        nextLinkClassName={"nextBttn"}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"paginationActive"}
+                    />
+                    {
+                        showModal ?
+                            <Modal
+                                setShowModal={setShowModal}
+                                propId={propId}
+                                propName={propName}
+                                voter={voter}
+                                setVoter={setVoter}
+                                contract={contract}
+                                getProposal={getProposal}
+                                accounts={accounts}
+                                canVote={canVote} />
+                            :
+                            null
+                    }
+                    <div className='alert-container'>
+                        <div className='alert'>Success</div>
+                    </div>
+                </section >
+            </div>
+
         </div >
 
     )

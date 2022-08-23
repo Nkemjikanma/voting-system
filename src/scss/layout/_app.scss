@@ -3,20 +3,24 @@
     width: 100vw;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     position: relative;
-    overflow-y: auto;
-    border: 1px solid red;
+    overflow-y: hidden;
+    //padding: 1rem 1rem;
+    //border: 1px solid red;
 
     //border: 1px solid red;
 
     //background-color: var(--accent-color);
     .app-container {
         position: relative;
-        width: 60%;
-        min-width: 50rem;
-        height: 90%;
-        //border: 1px solid green;
+        width: 50%;
+        min-width: 60rem;
+        height: 100vh;
+        //border: 1px solid purple;
+        display: flex;
+        flex-direction: row;
+        //align-items: center;
+        justify-content: center;
     }
 }

@@ -5,7 +5,6 @@ import Header from './components/Header'
 import Main from './components/Main'
 import ChairPerson from './components/ChairPerson'
 import VotingSystem from './artifacts/contracts/VotingSystem.sol/VotingSystem.json'
-import { FiSend } from "react-icons/fi";
 import ReactPaginate from 'react-paginate'
 import { AiOutlineClose, AiFillLock, AiFillUnlock } from "react-icons/ai";
 import { GrMenu } from "react-icons/gr";
@@ -141,28 +140,25 @@ export default function App() {
     return (
         //{<votingSystemContext.provider value={{}}>{children}</votingSystemContext.provider>}
         <div className='app'>
-            <div className='logo vertical'>
-                < div className='menu-logo'><GrMenu className='menu-icon' /></div>
-                <div className='rkive'><p>rkive</p></div>
-                <svg viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg" width="30" height="100%">
-                    <rect className='rect' width="7" height="1000" x="190" y="-5" />
-                </svg>
-                <div className='a'><p>a</p></div>
-            </div>
+
             <div className='app-container'>
                 {
                     (isConnected) ?
-                        (accounts[0] == "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266") ?
-                            <ChairPerson
-                                isConnected={isConnected}
-                                account={accounts[0]}
-                                contract={contract}
-                                allProposalNames={allProposalNames}
-                                allProposalsData={allProposalsData}
-                                getProposal={getProposal}
-                            //checkIfWallet={checkIfWallet}
-                            //connectWallet={connectWallet}
-                            /> :
+                        (accounts[0] === "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266") ?
+                            (<div><section className='top-section'>
+                                <Header
+                                    accounts={accounts} />
+                            </section>
+                                <ChairPerson
+                                    isConnected={isConnected}
+                                    account={accounts[0]}
+                                    contract={contract}
+                                    allProposalNames={allProposalNames}
+                                    allProposalsData={allProposalsData}
+                                    getProposal={getProposal}
+                                //checkIfWallet={checkIfWallet}
+                                //connectWallet={connectWallet}
+                                /></div>) :
                             <Main
                                 isConnected={isConnected}
                                 accounts={accounts[0]}
@@ -173,6 +169,14 @@ export default function App() {
                             />
 
                         : <div className='landing-page'>
+                            <div className='logo vertical'>
+                                < div className='menu-logo'><GrMenu className='menu-icon' /></div>
+                                <div className='rkive'><p>rkive</p></div>
+                                <svg viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg" width="30" height="100%">
+                                    <rect className='rect' width="7" height="1000" x="190" y="-5" />
+                                </svg>
+                                <div className='a'><p>a</p></div>
+                            </div>
                             <div className='landing-section'>
                                 <div className='sign-button'>
                                     {isConnected ? <p className='header--p'>{accounts[0]}</p> : <button onClick={() => connectWallet()} className='connect-button'><h1>Connect</h1></button>}

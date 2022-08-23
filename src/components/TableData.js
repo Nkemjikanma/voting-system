@@ -19,7 +19,7 @@ export default function TableData({ tableData }) {
                         tableData.map((data, index) => {
                             return (
                                 <tr key={index}>
-                                    <td><img src={data.img_url} alt={data.proposal} width="100" height="130" /></td>
+                                    <td><img src={data.img_url} alt={data.proposal} width="20" height="35" /></td>
                                     <td>{data.proposal}</td>
                                 </tr>
                             )

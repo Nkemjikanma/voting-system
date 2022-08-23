@@ -12,12 +12,15 @@ export default function Modal({ showModal, setShowModal, propId, propName, setVo
         }
     }
 
+    /**
+     * ? Call the vote function in the smart contract when the user wants to vote and
+     */
     function handleVote() {
         setVoter(async (prevVoter) => {
             try {
                 const voterData = await contract.getVoterData(ethers.utils.getAddress(accounts));
                 setVoter(voterData)
-                console.log("This is voter data", voter)
+                //console.log("This is voter data", voter)
                 const voting = await contract.vote(propName)
                 alert("Your vote has been cast")
                 getProposal();

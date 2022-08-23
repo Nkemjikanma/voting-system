@@ -12,11 +12,14 @@ pragma solidity ^0.8.6;
 
 contract VotingSystem {
 
-     address public chairPerson; // deployer 
+
+    /******* Setting up variables ******/
+     address public chairPerson; // the admin
 
     // Handling voters
     uint public _idVoter; //ever user has an id
     address[] public allVotersAdd; // address of all the users who vote, creator in example 
+
     // Properties for every single user 
     struct Voter {
         address account; 
@@ -34,16 +37,16 @@ contract VotingSystem {
         uint weight, 
         string votedProposal
     ); 
-    //mapping creating voters for all users 
+    //mapping voters 
     mapping(address => Voter) public voters; 
 
-    bool votedStat;
-    uint votedWeight;
+    //bool votedStat;
+    //uint votedWeight;
 
     //handling proposals
-    string[] public proposalList; //all the proposals, message in example
+    string[] public proposalList; //all the proposals
     uint public _propId; //
-    uint[] public proposalId; // every proposal has an id messageId in example
+    uint[] public proposalId; // every proposal has an id
 
     struct Proposal{
         uint propId;
@@ -64,15 +67,17 @@ contract VotingSystem {
     mapping(string => Proposal) public proposals;
     //Proposal[] public proposalsEntire;
 
+    /***** Initialilzing constructor *****/
     constructor() {
         chairPerson = msg.sender;
     }
-
+    /***** Increament function to set every voter's id and a proposal id for all proposals *****/
     function increment() internal {
         _idVoter++;
         _propId++; 
     }
 
+    /***** Function the create the proposal *****/
     function createProposal(string calldata _proposalName, string calldata _img_url, uint durationMinutes) external {
 
         require(msg.sender == chairPerson);
@@ -100,32 +105,22 @@ contract VotingSystem {
     //    Proposal
     //}
 
+    /******* Gets the id of all proposals ******/
     function getProposalIds() public view returns (uint[] memory) {
         return proposalId;
     }
-
+    
+    /******* Gets all proposals names ******/
     function getProposals() external view returns(string[] memory) {
         return proposalList;
     }
 
+    /******* Gets address of everyone that has voted ******/
     function getAllVoters() external view returns(address[] memory){
         return allVotersAdd;
     }
 
-    //function getAllPeople() public view returns (People[] memory) {
-    //return people;
-
-    function activateVoter() public {
-        votedStat = false;
-        //require(!votedStat)
-        // voters[msg.sender].voted = false;
-        //voters[msg.sender].voted = true;
-        //require(voters[voter].weight == 0);
-        votedWeight = 1;
-        //voters[msg.sender].weight = 1; 
-        
-    }
-
+    /******* Executes the vote ******/
     function vote( string memory _votedProposal) external {
         require(msg.sender != chairPerson);
         require(proposalList.length >= 1);
@@ -157,6 +152,7 @@ contract VotingSystem {
         emit VoteEvent(voterData.account, voterData.userId, voterData.vote, voterData.voted, voterData.weight, voterData.votedProposal);
     }
 
+    /******* Returns the data of all proposals ******/
     function getProposalData(string calldata _propName) public view returns( uint, string memory, string memory, uint, uint, bool) { 
         Proposal memory singleProposal = proposals[_propName];
          
@@ -170,6 +166,7 @@ contract VotingSystem {
         );
     }
 
+    /******* Returns all the data of all the voters ******/
     function getVoterData(address _userAdd) public view returns(address, uint, uint, bool, uint, string memory) {
         Voter memory singleVoter = voters[_userAdd]; 
 
@@ -188,6 +185,7 @@ contract VotingSystem {
         delete proposals[_propName];
     }
 
+    /******* functions to update the status of proposal duration  ******/
     function expired() internal {
         for(uint i= 0; i < proposalList.length; i++ ) {
             //Proposal storage toProp = proposals[i];
@@ -195,6 +193,8 @@ contract VotingSystem {
             proposals[proposalList[i]].status = true; 
         }
     }
+
+    //setInterval(expired, 1 * 1000 * 60);
    
 
 }

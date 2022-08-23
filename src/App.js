@@ -51,24 +51,18 @@ export default function App() {
             // oldNetwork exists, it represents a changing network
             if (oldNetwork) {
                 setIsConnected(false)
-                //setAccounts([])
-                //window.location.reload();
-
-                //console.log(newNetwork)
-                //setIsConnected(false)
-
             }
         });
     }, [isConnected])
 
     /**
      * * Interacting with the smart contract 
-     * ? Contract connector, help saving me from repetition. :) 
-     * ? createProposal: creating a new proposal by only chairperson 
+     * ? Contract connector, help saving me from repetition.
      * ? castVote: every wallet asides the chairperson can cast the vote
      * ? getProposals: Retrieve a list of proposals for display on table 
      * ? changeToExpired: set the status of the proposal to expired 
      */
+
     async function contractConnector() {
         // connecting with smart contract 
         const web3modal = new Web3Modal();
@@ -84,20 +78,23 @@ export default function App() {
     }, [isConnected, accounts[0]])
 
 
-    const castVote = async (voteProposal) => {
+    /**
+      * ? Call the vote function when the user wants to vote
+      */
+    /*const castVote = async (voteProposal) => {
         try {
-
             const vote = await contract.vote(voteProposal)
             vote.wait()
-
             console.log(vote)
         } catch (error) {
             setError("Something went wrong while trying to cast vote")
         }
-    }
+    }*/
 
-    //
-
+    /**
+      * ? Call the getProposals function in the smart contract to populate a list of all proposal.
+      * ? To get another list of objects containing every proposal's data
+      */
     const getProposal = async () => {
         try {
             const getAllProposalNames = await contract.getProposals();
@@ -117,24 +114,19 @@ export default function App() {
         }
 
     }
-    /**
-    * ? check for valid proposals
-    */
 
-    //Change proposal status to expired 
+    /**
+    * ? Call the expired function in the smart contract to update the status of the proposal
+    */
     const validProposals = async () => {
         try {
-            for (let props of allProposalsData) {
-                //console.log()
-                const propData = await contract.expired(props["singleData"][1]);
-                //propData.wait()
-                console.log(propData)
-            }
+            const expiredData = await contract.expired().send();
+            console.log(expiredData)
         } catch (error) {
             setError("Unable to change to expired")
         }
     }
-    //validProposals()
+    setInterval(validProposals, 2 * 1000 * 60)
 
 
     return (

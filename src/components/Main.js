@@ -65,10 +65,10 @@ export default function Main({ accounts, contract, allProposalsData, allProposal
         try {
             const votersList = await contract.getAllVoters()
             setAllVoters(votersList)
+            console.log(allVoters)
             if (allVoters.includes(ethers.utils.getAddress(accounts))) {
                 setIfVoted(true)
                 setDisabledButton(true);
-                console.log("can def vote")
             }
         } catch (error) {
             console.log("Error fetching")
@@ -79,8 +79,6 @@ export default function Main({ accounts, contract, allProposalsData, allProposal
         allProposalsData
             .slice(pagesVisited, proposalsPerPage)
             .map((data, i) => {
-                //setPropId(data["singleData"][0].toNumber());
-                //setPropName(data["singleData"][1]);
                 return (<div key={i} className="viewData--content" >
                     <img src={JSON.stringify(data["singleData"][2]).slice(1, -1)} alt="Proposals" width="150" height="170" />
                     <div className='smaller--content'>

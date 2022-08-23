@@ -2,46 +2,36 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { AiFillLock, AiFillUnlock } from 'react-icons/ai';
 import ReactPaginate from 'react-paginate'
-import {
-    Alert,
-    AlertIcon,
-    AlertTitle,
-    AlertDescription,
-} from '@chakra-ui/react'
 import VotingSystem from '../artifacts/contracts/VotingSystem.sol/VotingSystem.json'
-import TableData from './TableData'
 import Header from './Header'
 import Aside from './Aside';
-
 import styled from '@emotion/styled'
 import { GrWifiNone } from 'react-icons/gr';
 
 
-//console.log("chairperson", contract)
+
 export default function ChairPerson({ isConnected, account, contract, allProposalNames, allProposalsData, checkIfWallet, connectWallet, getProposal }) {
     const [formData, setFormData] = React.useState({
         proposal: "",
         img_url: "",
         duration: 0
     }); // handles the user inputs
-    //const [alert, setAlert] = React.useState(false); // Used to handle messages
-    const [transactionHash, setTransactionHash] = React.useState("") // 
+
+    const [transactionHash, setTransactionHash] = React.useState("") // state used to check for change in transaction has
     const [pageNumber, setPageNumber] = React.useState(0); // used for pagination
 
-    // Setting up pagination 
+    /***** Setting up pagination ******/
     const proposalsPerPage = 10;
     const pagesVisited = pageNumber * proposalsPerPage;
     const pageCount = Math.ceil(allProposalsData.length / proposalsPerPage)
 
     React.useEffect(() => {
         getProposal();
-        //addProposal();
-    }, [allProposalNames[-1]])
+    }, [allProposalNames[-1], transactionHash])
 
 
     /**
-     * ? Check for changes in user input 
-     * 
+     * ? Handles changes in user input 
      */
     function handleChange(event) {
         const { name, value, type } = event.target;
@@ -54,7 +44,7 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
     }
 
     /**
-     * ? Add proposal to the blockchain
+     * ? Add proposal
      */
     function addProposal(event) {
         event.preventDefault()
@@ -96,7 +86,7 @@ export default function ChairPerson({ isConnected, account, contract, allProposa
             .map((data, i) => {
                 return (< tr key={i} className="table-rows" >
                     {<td className='index' >{i + 1}</td>}
-                    <td><img src={JSON.stringify(data["singleData"][2]).slice(1, -1)} alt="Proposals" width="70" height="80" /></td>
+                    <td><img src={JSON.stringify(data["singleData"][2]).slice(1, -1)} alt="Proposals" width="30" height="30" /></td>
                     <td>{JSON.stringify(data["singleData"][1]).slice(1, -1)}</td>
                     <td>{JSON.stringify(data["singleData"][3].toNumber())}</td>
                     <td>{JSON.stringify(data["singleData"][5]) ? <AiFillUnlock /> : <AiFillLock />}</td>

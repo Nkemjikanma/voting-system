@@ -11,6 +11,7 @@ import { GrMenu } from "react-icons/gr";
 
 
 import '../src/scss/style.scss';
+//If forked, input your own contract address.
 const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 
 export default function App() {
@@ -58,9 +59,8 @@ export default function App() {
     /**
      * * Interacting with the smart contract 
      * ? Contract connector, help saving me from repetition.
-     * ? castVote: every wallet asides the chairperson can cast the vote
      * ? getProposals: Retrieve a list of proposals for display on table 
-     * ? changeToExpired: set the status of the proposal to expired 
+     * ? validProposals: set the status of the proposal to expired 
      */
 
     async function contractConnector() {
@@ -77,19 +77,6 @@ export default function App() {
         connectWallet();
     }, [isConnected, accounts[0]])
 
-
-    /**
-      * ? Call the vote function when the user wants to vote
-      */
-    /*const castVote = async (voteProposal) => {
-        try {
-            const vote = await contract.vote(voteProposal)
-            vote.wait()
-            console.log(vote)
-        } catch (error) {
-            setError("Something went wrong while trying to cast vote")
-        }
-    }*/
 
     /**
       * ? Call the getProposals function in the smart contract to populate a list of all proposal.
@@ -136,6 +123,7 @@ export default function App() {
             <div className='app-container'>
                 {
                     (isConnected) ?
+                        //replace the address below with the address you want to use as admin
                         (accounts[0] === "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266") ?
                             (<div><section className='top-section'>
                                 <Header
